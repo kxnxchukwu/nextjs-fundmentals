@@ -6,7 +6,7 @@ import { unstable_cacheTag as cacheTag } from 'next/cache'
 import { issues, users } from '@/db/schema'
 import { mockDelay } from './utils'
 
-export const getCurrentUser = async () => {
+export const getCurrentUser = cache(async () => {
   const session = await getSession()
   if (!session) {
     return null
@@ -22,7 +22,7 @@ export const getCurrentUser = async () => {
     console.error('Error getting user by ID:', error)
     return null
   }
-}
+})
 
 export const getUserByEmail = async (email: string) => {
   try {
