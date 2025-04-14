@@ -11,20 +11,11 @@ function handleApiAuth(request: NextRequest): NextResponse | void {
   }
 }
 
-function handleDashboardAuth(request: NextRequest): NextResponse | void {
-  const isAuthenticated = request.cookies.has('auth-token')
-  if (!isAuthenticated) {
-    return NextResponse.redirect(new URL('/login', request.url))
-  }
-}
-
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   if (pathname.startsWith('/api'))
     return handleApiAuth(request) ?? NextResponse.next()
-  if (pathname.startsWith('/dashboard'))
-    return handleDashboardAuth(request) ?? NextResponse.next()
 
   return NextResponse.next()
 }
