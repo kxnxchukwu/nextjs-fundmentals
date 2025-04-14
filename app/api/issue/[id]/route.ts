@@ -5,9 +5,9 @@ import { eq } from 'drizzle-orm'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
-  const { id } = await params
+  const { id } = context.params
   try {
     const issue = await db.query.issues.findFirst({
       where: eq(issues.id, parseInt(id)),
