@@ -102,7 +102,7 @@ export default async function MarketingLayout({
                 </li>
                 <li>
                   <a
-                    href="https://github.com/yourusername/mode"
+                    href="https://github.com/kxnxchukwu/nextjs-fundmentals"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm text-gray-600 hover:text-purple-600"
